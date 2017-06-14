@@ -123,6 +123,16 @@ export default class Parabola extends Component {
             let {x: rx1, y: ry1} = start
             let {x: rx2, y: ry2} = end
 
+            if (ry1>ry2){ //add by Williams
+              percent = 1-percent
+              let tmp = rx1
+              rx1 = rx2
+              rx2 = tmp
+              tmp = ry1
+              ry1 = ry2
+              ry2 = tmp
+            }
+
             let direction = rx2 > rx1 ? 1 : -1
 
             let lmy1 = ry2 - rry1
@@ -158,4 +168,3 @@ export default class Parabola extends Component {
     }
 
 }
-
