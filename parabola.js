@@ -6,8 +6,7 @@
  */
 
 import React, {
-    PropTypes,
-    Component,
+    PureComponent,
 } from 'react'
 import {
     StyleSheet,
@@ -15,8 +14,9 @@ import {
     Text,
     Dimensions,
 } from 'react-native'
+import PropTypes from 'prop-types';
 
-export default class Parabola extends Component {
+export default class Parabola extends PureComponent {
 
     static defaultProps = {
         rate: 1,
@@ -52,7 +52,8 @@ export default class Parabola extends Component {
 
     componentWillReceiveProps (nextProps) {
         let {start, end, isTrigger,} = nextProps
-        if (isTrigger) {
+        //isTrigger从 false 到 true才触发动画
+        if (isTrigger&&this.props.isTrigger==false) {
             let parabola = {
                 start,
                 end,
